@@ -1,6 +1,9 @@
 void main(List<String> args) {
-  final windPlant = WindPlant(initialEnergy: 20);
+  final windPlant = WindPlant(initialEnergy: 100);
+  final nuclearPlant = NuclearPlant(energyLeft: 1000);
+
   print('wind: ${chargePhone(windPlant)}');
+  print('nuclear: ${chargePhone(nuclearPlant)}');
 }
 
 double chargePhone(EnergyPlant plant) {
@@ -12,7 +15,7 @@ double chargePhone(EnergyPlant plant) {
 
 abstract class EnergyPlant {
   double energyLeft;
-  PlantType type;
+  final PlantType type;
 
   EnergyPlant({
     required this.energyLeft,
@@ -35,4 +38,25 @@ class WindPlant extends EnergyPlant {
   }
 }
 
-//extends o heredar
+class NuclearPlant implements EnergyPlant {
+  @override
+  double energyLeft;
+
+  @override
+  final PlantType type = PlantType.nuclear;
+
+  NuclearPlant({
+    required this.energyLeft,
+  });
+
+  @override
+  void consumeEnergy(double amount) {
+    energyLeft -= (amount * 0.5);
+  }
+}
+
+//extends o heredar todo
+
+//implements colocar explicitamente las propiedades de la clase abstracta, algunas propiedades
+
+//ambos sirven para la herencia
