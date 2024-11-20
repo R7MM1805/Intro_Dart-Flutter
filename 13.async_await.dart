@@ -3,7 +3,7 @@ void main(List<String> args) async {
   String responseGet = await httpGet('https://www.algo.com');
   print(responseGet);
   try {
-    String responseGetError = await httpGetError('https://www.algo.com');
+    String responseGetError = await httpGetError('https://www.algo-error.com');
     print(responseGetError);
   } catch (e) {
     print('Tenemos un error: $e');
